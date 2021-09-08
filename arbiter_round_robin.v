@@ -36,14 +36,14 @@
          else if(req[1])  gnt <= 4'b0010;
          else if(req[2])  gnt <= 4'b0100;
          else if(req[3])  gnt <= 4'b1000;
-         else gnt <= 2'd3;
+         else gnt <= 4'b0000;
        end
        default: begin        
          if(req[0])         gnt <= 4'b0001;;
          else if(req[1])  gnt <= 4'b0010;
          else if(req[2])  gnt <= 4'b0100;
          else if(req[3])  gnt <= 4'b1000;
-         else gnt <= 2'd3;
+         else gnt <= 4'b0000;
        end
      endcase 
    end
