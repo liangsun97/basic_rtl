@@ -1,4 +1,7 @@
-// 
+// nvidia笔试题：data_out contains 4 bytes data from the same position but in different input cycle.(i.e., output cycle 0 contains the lowest
+// bytes from input cycle 0 to 3. .... output cycle 3 contains the highest bytes from input cycle 0 to 3.... 
+// output cycle 4 contains the lowest bytes from input cycle 4 to 7. .... ) 
+
 module moduleName (
     input clk,
     input rst_n,
