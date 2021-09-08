@@ -58,7 +58,7 @@ module moduleName (
     assign rd_addr_gray = rd_addr ^ (rd_addr>>1);
 
     always @(posedge clkr or negedge rstn_r) begin
-        if(!rstn_w)  begin
+        if(!rstn_r)  begin
             wr_addr_gray_d1 <= 'd0;
             wr_addr_gray_d2 <= 'd0;            
         end
@@ -69,7 +69,7 @@ module moduleName (
     end
 
     always @(posedge clkw or negedge rstn_w) begin
-        if(!rstn_r)  begin
+        if(!rstn_w)  begin
             rd_addr_gray_d1 <= 'd0;
             rd_addr_gray_d2 <= 'd0;            
         end
