@@ -1,5 +1,8 @@
+// 序列模三（整除3）检测器
+// https://blog.csdn.net/darknessdarkness/article/details/105734337?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163106765916780274188649%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=163106765916780274188649&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v29_ecpm-1-105734337.first_rank_v2_pc_rank_v29&utm_term=verilog+3%E6%95%B4%E9%99%A4&spm=1018.2226.3001.4187
+
 // if a serial input vector can be divided by 3, output 1'b1
-// 0,1,2
+// 余数可能是0, 1, 2。分别用s0, s1, s2表示
 //               0          1
 // IDLE       S0        S1
 // S0          S0        S1
@@ -32,22 +35,11 @@ end
 
 always @(*) begin
    case(c_state) 
-   IDLE: begin
-                if(~data_in) n_state = S0;
-                else n_state = S1; 
-            end 
-   S0: begin
-                if(~data_in) n_state = S0;
-                else n_state = S1; 
-            end 
-   S1: begin
-                if(~data_in) n_state = S2;
-                else n_state = S0; 
-            end
-   S2: begin
-                if(~data_in) n_state = S1;
-                else n_state = S2; 
-            end
+   IDLE: n_state = data_in ? S1 : S0;
+   S0: n_state = data_in ? S1 : S0;
+   S1: n_state = data_in ? S0 : S2;
+   S2: n_state = data_in ? S2 : S1;
+   default: n_state = IDLE;
    endcase
 end
 

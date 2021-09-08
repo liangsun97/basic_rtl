@@ -8,7 +8,9 @@ module moduleName (
     input push,
     input pop,
     input [WIDTH-1 : 0] data_in,
-    output [WIDTH-1 : 0] data_out
+    output [WIDTH-1 : 0] data_out，
+    output full,
+    output empty
 );
     localparam ADDR_WIDTH = $clog(LENGTH);
 
@@ -35,7 +37,7 @@ module moduleName (
     always @(posedge clk or negedge rst_n) begin
         if(!rst_n)  begin
             for(i=0;i<LENGTH;i++)
-                mem[LENGTH] <= 'd0;
+                mem[i] <= 'd0;
         end
         else if(push & ~full)
             mem[wr_addr[ADDR_WIDTH-1:0]] <= data_in;
