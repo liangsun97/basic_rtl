@@ -20,11 +20,11 @@ module divider(
 
     always @(posedge clk or negedge rst) begin
         if(~rst) 
-            clk_out <= 1'b0;
+            clk_div <= 1'b0;
         else if(cnt<3'b4) 
-            clk_out <= 1'b1;
+            clk_div <= 1'b1;
         else 
-            clk_out <= 1'b0;
+            clk_div <= 1'b0;
     end
 
-end
+endmodule
