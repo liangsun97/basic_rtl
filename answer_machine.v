@@ -5,7 +5,7 @@ parameter WIDTH = 5
     input clk,
     input rst_n,
     input butten,
-    input trigger
+    input trigger,
     input [WIDTH-1 : 0] others,
     output red,
     output yellow,
